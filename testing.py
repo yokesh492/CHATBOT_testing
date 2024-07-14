@@ -2,10 +2,10 @@ import os
 import gradio as gr
 from llama_index.core import Document, VectorStoreIndex
 import openai
+from dotenv import load_dotenv 
 
 # Set up OpenAI API key
-os.environ['OPENAI_API_KEY'] = 'sk-proj-SAGFBzrNHaZt8raVhC3QT3BlbkFJqkIr4NTXpPGc4wJ5BVxi'
-openai.api_key = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Function to read content from a .txt file
 def read_txt(file_path):
@@ -85,4 +85,4 @@ iface = gr.Interface(
 )
 
 # Launch the Gradio app
-iface.launch()
+iface.launch(server_name="0.0.0.0", server_port=7860)
